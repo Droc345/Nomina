@@ -100,19 +100,51 @@
 								</h:inputText>
 							</div>
 						</div>
-						<div class="row" style="padding-top: 5px">
+						<div class="row" style="padding-top: 8px">
 							<div class="col">
 								<h:outputLabel for="salario" value="Salario Basico:" />
 							</div>
 							<div class="col">
-								<h:inputText id="salario" value="#{cdt.nom.emp.salario}"
-									required="true" />
+								<h:selectOneMenu style="widht:12px" id="salario"
+									styleClass="form-select" value="#{cdt.nom.emp.salario}">
+
+									<f:selectItem itemValue="1750000"
+										itemLabel="1'750.000$" />
+									<f:selectItem itemValue="2000000"
+										itemLabel="2'000.000$" />
+									<f:selectItem itemValue="2500000"
+										itemLabel="2'500.000$" />
+									<f:selectItem itemValue="3000000"
+										itemLabel="3'000.000$" />
+									<f:selectItem itemValue="4000000"
+										itemLabel="4'000.000$" />
+									<f:selectItem itemValue="5000000"
+										itemLabel="5'000.000$" />
+								</h:selectOneMenu>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px">
+							<div class="col">
+								<h:outputLabel for="dias" value="Días trabajados:" />
+							</div>
+
+							<div class="col">
+								<h:inputText id="dias" value="#{cdt.nom.dias}" type="number"
+									required="true"
+									styleClass="form-control">
+
+									<f:validateLongRange minimum="1" maximum="30" />
+
+									<f:ajax event="keyup" render="msgDias" />
+								</h:inputText>
+
+								<h:message id="msgDias" for="dias" style="color:red" />
 							</div>
 						</div>
 					</div>
 					<div class="card-body">
 						<div id="liveAlertPlaceholder"></div>
-						<h:commandButton id="liveAlertBtn" value="Calcular Nomina"
+						<h:commandButton value="Calcular Nomina"
 							class="btn btn-outline-success" action="#{cdt.registrar}">
 							<f:ajax execute="@form" render="@form tablaNomina" />
 						</h:commandButton>
@@ -127,38 +159,49 @@
 				style="text-align: center; margin-top: 3%; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
 				<br></br>
 				<h3>Registro de Nominas</h3>
-				
-				<div class="card-body">
-				<div id="tabla" >
-					<div class="row">
-						<h:form>
-							<h:commandButton value="Regresar" class="btn btn-outline-success"
-								action="#{cdt.regresar}">
-							</h:commandButton>
-						</h:form>
-					</div>
 
-					<div class="row" style="padding-top: 30px">
-						
-					</div>
-					<div class="row" style="padding-top: 15px">
-						<h:dataTable id="tablaNomina" value="#{cdt.lista}" var="a" border="1">
-							<h:column>
-								<f:facet name="header">Identificación</f:facet>
+				<div class="card-body">
+					<div id="tabla">
+						<div class="row">
+							<h:form>
+								<h:commandButton value="Regresar"
+									class="btn btn-outline-success" action="#{cdt.regresar}">
+								</h:commandButton>
+							</h:form>
+						</div>
+
+						<div class="row" style="padding-top: 30px"></div>
+						<div class="row" style="padding-top: 15px">
+							<h:dataTable id="tablaNomina" value="#{cdt.lista}" var="a"
+								border="1">
+								<h:column>
+									<f:facet name="header">Identificación</f:facet>
 		                #{a.emp.id}
 		            </h:column>
-							<h:column>
-								<f:facet name="header">Nombre</f:facet>
+								<h:column>
+									<f:facet name="header">Nombre</f:facet>
 		                #{a.emp.nombre}
 		            </h:column>
-							<h:column>
-								<f:facet name="header">Correo</f:facet>
+								<h:column>
+									<f:facet name="header">Apellido</f:facet>
+		                #{a.emp.apellido}
+		            </h:column>
+								<h:column>
+									<f:facet name="header">Correo</f:facet>
 		                #{a.emp.correo}
 		            </h:column>
-						</h:dataTable>
+								<h:column>
+									<f:facet name="header">Salario</f:facet>
+		                #{a.emp.salario}<a> $</a>
+		            </h:column>
+								<h:column>
+									<f:facet name="header">Dias Trabajados</f:facet>
+		                #{a.dias}
+		            </h:column>
+							</h:dataTable>
+						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 			
 		</div>
