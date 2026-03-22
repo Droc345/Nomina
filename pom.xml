@@ -3,4 +3,53 @@
   <groupId>udistrital.edu</groupId>
   <artifactId>Nomina</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+    
+    <name>mv5-1.0-SNAPSHOT</name>
+    
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <jakartaee>10.0.0</jakartaee>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>${jakartaee}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JSF (Jakarta Faces) -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.faces</artifactId>
+            <version>4.0.1</version> <!-- �ltima versi�n estable a junio 2025 -->
+        </dependency>
+        <!-- CDI (Jakarta Contexts and Dependency Injection) -->
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+       <!-- weld-servlet-shaded para CDI -->
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet-shaded</artifactId>
+            <version>4.0.2.Final</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>mv5</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
