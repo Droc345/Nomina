@@ -37,4 +37,35 @@ public class Nomina {
 	}
 	
 	
+	public double getsalarioDesvengado() {
+		double sd=0, saldia=0;
+		saldia= emp.getSalario()/30;
+		
+		sd=Math.round(saldia*dias);
+		return sd;
+	}
+	
+	public double getDescuento(){
+		double salud=0;
+		
+		salud=Math.round(getsalarioDesvengado()*0.04);
+		
+		return salud;
+	}
+	
+	public String getAuxilio() {
+		if(emp.getSalario()<=2000000) {
+			return"250000 $";
+		}else {
+			return "No aplica";
+		}
+	}
+	
+	public double getNeto() {
+		if(emp.getSalario()<=2000000) {
+				return getsalarioDesvengado()-(getDescuento()*2)+250000;
+			}else {
+				return getsalarioDesvengado()-(getDescuento()*2);
+			}
+	}
 }

@@ -164,8 +164,8 @@
 					<div id="tabla">
 						<div class="row">
 							<h:form>
-								<h:commandButton value="Regresar"
-									class="btn btn-outline-success" action="#{cdt.regresar}">
+								<h:commandButton value="Limpiar"
+									class="btn btn-outline-success" action="#{cdt.Limpiar}">
 								</h:commandButton>
 							</h:form>
 						</div>
@@ -197,6 +197,26 @@
 								<h:column>
 									<f:facet name="header">Dias Trabajados</f:facet>
 		                #{a.dias}
+		            </h:column>
+		            <h:column>
+									<f:facet name="header">Salario Desvengado</f:facet>
+		                #{a.salarioDesvengado}<a> $</a>
+		            </h:column>
+		            <h:column>
+									<f:facet name="header">Descuento Salud</f:facet>
+		                #{a.descuento}<a> $</a>
+		            </h:column>
+		            <h:column>
+									<f:facet name="header">Descuento Pension</f:facet>
+		                #{a.descuento}<a> $</a>
+		            </h:column>
+		            <h:column>
+									<f:facet name="header">Auxilio de Transporte</f:facet>
+		                #{a.auxilio}
+		            </h:column>
+		            <h:column>
+		            	<f:facet name="header">Neto a Pagar</f:facet>
+		                #{a.neto}
 		            </h:column>
 							</h:dataTable>
 						</div>

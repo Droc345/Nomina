@@ -43,6 +43,10 @@ public class Bean implements Serializable {
 	public void setNom(Nomina nom) {
 		this.nom = nom;
 	}
+	
+	public void Limpiar() {
+		dao.listar().clear();
+	}
     
     
 }
