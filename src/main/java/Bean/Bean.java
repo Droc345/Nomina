@@ -47,6 +47,14 @@ public class Bean implements Serializable {
 	public void Limpiar() {
 		dao.listar().clear();
 	}
-    
+	
+	public void eliminar(Nomina n) {
+
+	    System.out.println("Eliminando: " + n.getEmp().getId());
+
+	    dao.eliminar(n);
+
+	    System.out.println("Lista: " + dao.listar().size());
+	}
     
 }

@@ -166,6 +166,7 @@
 							<h:form>
 								<h:commandButton value="Limpiar"
 									class="btn btn-outline-success" action="#{cdt.Limpiar}">
+									<f:ajax execute="@form" render="@form tablaNomina" />
 								</h:commandButton>
 							</h:form>
 						</div>
@@ -174,6 +175,13 @@
 						<div class="row" style="padding-top: 15px">
 							<h:dataTable id="tablaNomina" value="#{cdt.lista}" var="a"
 								border="1">
+								<h:column>
+									<f:facet name="header"></f:facet>
+									<h:commandButton value="X"
+										class="btn btn-outline-danger" action="#{cdt.eliminar}">
+										<f:ajax execute="@form" render="@form tablaNomina" />
+									</h:commandButton>
+		            </h:column>
 								<h:column>
 									<f:facet name="header">Identificación</f:facet>
 		                #{a.emp.id}
