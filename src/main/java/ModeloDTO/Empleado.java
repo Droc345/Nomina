@@ -3,6 +3,12 @@ package ModeloDTO;
 public class Empleado extends Persona{
 	private double salario;
 
+	
+	public Empleado() {
+		super();
+		this.salario = 0.0;
+	}
+	
 	public Empleado(double salario) {
 		super();
 		this.salario = salario;

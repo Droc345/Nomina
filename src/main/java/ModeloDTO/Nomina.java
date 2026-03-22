@@ -4,6 +4,11 @@ public class Nomina {
 	private int dias;
 	private Empleado emp;
 	
+	public Nomina() {
+		super();
+		this.dias = 0;
+		this.emp = new Empleado();
+	}
 	
 	public Nomina(int dias, Empleado emp) {
 		super();
