@@ -16,19 +16,33 @@ public class Bean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Nomina nom = new Nomina();
-    private NominaDAO dao = new NominaDAO();
+	private Nomina nom ;
+    private NominaDAO dao;
+    
+    
 
-    public String registrar(){
+    public Bean() {
+		super();
+		this.nom = new Nomina();
+		this.dao  = new NominaDAO();
+	}
 
+	public void registrar(){
         dao.guardar(nom);
         nom = new Nomina();
-        
-
-        return "Datos?faces-redirect=true";
     }
 
     public List<Nomina> getLista(){
         return dao.listar();
     }
+
+	public Nomina getNom() {
+		return nom;
+	}
+
+	public void setNom(Nomina nom) {
+		this.nom = nom;
+	}
+    
+    
 }
